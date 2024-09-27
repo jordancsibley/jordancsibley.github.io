@@ -4,18 +4,21 @@ project:
   
 
 website:
-  title: "jordancsibley.github.io"
+  title: "Jordan Sibley"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - href: resources.qmd
+        text: Resources
 
 format:
   html:
-    theme: cosmo
+    theme: yeti
     css: styles.css
-    toc: true
+    toc: false
+    page-layout: full
 
 editor: visual
 

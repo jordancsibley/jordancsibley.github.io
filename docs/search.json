@@ -4,6 +4,20 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Jordan Sibley",
+    "section": "",
+    "text": "Hi, I’m Jordan! Currently, I am a Master of Environmental Data Science (MEDS) student at the Bren School of Environmental Science & Management. During my time here at Bren, I aim to harness my analytical prowess in data science to drive impactful contributions to scientific research and sustainable solutions for marine coastal ecosystems.\n\nEducation\ntext here"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Jordan Sibley",
+    "section": "Education",
+    "text": "Education\ntext here"
   }
 ]
