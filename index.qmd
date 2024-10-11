@@ -7,20 +7,21 @@ about:
   image-width: 17em
   links: 
     - text: LinkedIn
+      icon: linkedin
       href: https://www.linkedin.com/in/jordancsibley/
       target: _blank
     - text: GitHub 
+      icon: github
       href: https://github.com/jordancsibley
       target: _blank
     - text: Email 
+      icon: envelope
       href: mailto:jordan.c.sibley@gmail.com
       target: _blank
-    
 ---
 
 Hi, I'm Jordan! Currently, I am a Master of Environmental Data Science (MEDS) student at the Bren School of Environmental Science & Management. During my time here at Bren, I aim to harness my analytical prowess in data science to drive impactful contributions to scientific research and sustainable solutions for marine coastal ecosystems.
 
-### Education 
-text here 
+### Education
 
-
+text here

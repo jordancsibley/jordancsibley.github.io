@@ -1,0 +1,48 @@
+/*-- scss:defaults --*/
+
+// Import font 
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+// Create font variables  
+$ubuntu: "Ubuntu", serif;
+
+//Colors 
+$darkblue: #29648B;
+$lightblue: #70A2B6;
+$white: #E2E7E6;
+$greygreen: #C6CABA;
+$darkgreen: #69705B;
+$burntorange: #c98043fd;
+
+
+// Quarto Sass Varibles 
+$body-bg: $white; //background color
+$navbar-bg: $darkgreen; //nav bar color 
+$navbar-fg: $white; // navbar foreground elements
+$navbar-hl: $burntorange; // highlight color when hovering over navbar links
+$body-color: $darkblue; // page text 
+$footer-bg: $greygreen; // footer 
+$link-color: $lightblue; // hyperlinks 
+
+
+/*-- scss:rules --*/
+h1, h2, h3, h4 {
+  font-family: $ubuntu; //text applied to headers 
+}
+
+
+h1, h2 { // applys to level 1 and level 2 headers
+  letter-spacing: 4px;
+  font-weight: 500; 
+}
+.title {
+  color: maroon;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.orange-text {
+  color: $burntorange;
+}
