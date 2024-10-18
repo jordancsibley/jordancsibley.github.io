@@ -1,0 +1,49 @@
+---
+title: "Blog post title"
+description: "A short catchy description of the blog post"
+author: 
+  - name: Jordan Sibley 
+    url: http://jordancsibley.github.io/
+    affiliation: MEDS 
+    affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science
+    
+date: 2024-10-18
+categories: [Quarto, MEDS]
+toc: true
+bibliography: references.bib
+csl: plos-computational-biology.csl
+image: sci-first-post.jpeg
+citation: 
+  url: http://jordancsibley.github.io/posts/2014-10-18-my-first-post/
+draft: true # prevents post from showing up until you are ready 
+---
+
+## This is my first section.
+
+I'm going to insert a footnote here[^1]
+
+[^1]: Here is a new footnote
+
+## This is my second
+
+Here's my next paragraph[^2]
+
+[^2]: Here is my second footnote
+
+Im citing [@csik2022]
+
+Im going to site a journal article now[@gaynor2022].
+
+Look you can add code too!
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+library(tidyverse)
+library(palmerpenguins)
+
+ggplot(palmerpenguins::penguins, aes(x = flipper_length_mm))+
+  geom_bar()
+```
+
