@@ -1,5 +1,9 @@
 ---
 title: "About"
+subtitle: "A little bit about myself"
+title-block-banner: true
 ---
 
-About this site
+
+
+

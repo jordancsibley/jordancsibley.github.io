@@ -5,20 +5,27 @@ project:
 
 website:
   title: "Jordan Sibley"
+  favicon: pics/jcs_logo.png
   navbar:
+    title: false
+    logo: pics/jcs_logo.png
+    logo-alt: "JCS logo"
     left:
       - href: index.qmd
         text: Home
       - about.qmd
       - href: resources.qmd
         text: Resources
+  page-footer:
+    background: light
+    left: Copyright 2024, Jordan Sibley
+    right: This website is built with {{< fa brands github title="the octocat github icon">}}, {{< fa brands r-project title="the R icon">}}, and Quarto
 
 format:
   html:
-    theme: yeti
-    css: styles.css
+    theme: styles.scss
+    mainfont: Ubuntu
     toc: false
     page-layout: full
 
-editor: visual
 
