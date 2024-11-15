@@ -5,7 +5,11 @@ project:
 
 website:
   title: "Jordan Sibley"
+  favicon: pics/jcs_logo.png
   navbar:
+    title: false
+    logo: pics/jcs_logo.png
+    logo-alt: "JCS logo"
     left:
       - href: index.qmd
         text: Home

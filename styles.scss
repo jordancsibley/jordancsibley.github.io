@@ -15,7 +15,7 @@ $darkgreen: #69705B;
 $burntorange: #c98043fd;
 
 
-// Quarto Sass Varibles 
+// Base document colors  
 $body-bg: $white; //background color
 $navbar-bg: $darkgreen; //nav bar color 
 $navbar-fg: $white; // navbar foreground elements
@@ -24,25 +24,36 @@ $body-color: $darkblue; // page text
 $footer-bg: $greygreen; // footer 
 $link-color: $lightblue; // hyperlinks 
 
-
 /*-- scss:rules --*/
+//text applied to headers 
 h1, h2, h3, h4 {
-  font-family: $ubuntu; //text applied to headers 
+  font-family: $ubuntu; 
 }
 
-
-h1, h2 { // applys to level 1 and level 2 headers
+// applys to level 1 and level 2 headers
+h1, h2 { 
   letter-spacing: 4px;
   font-weight: 500; 
 }
-.title {
-  color: maroon;
-}
-
 .center-text {
   text-align: center;
 }
 
-.orange-text {
+//body text 
+body {
+  font-family: $ubuntu;
+  line-height: 1.5;
+  font-size: 18.5px;
+  font-weight: 375;
+}
+
+//resize logo 
+.navbar-brand img {
+  max-height: 70px;
+  width: auto;
+}
+
+//title color 
+.title {
   color: $burntorange;
 }

@@ -1,21 +1,9 @@
 ---
 title: "About"
+subtitle: "A little bit about myself"
+title-block-banner: true
 ---
 
-## What I do for work 
-
-<p class="title">text</p>
 
 
-## What I do for fun 
 
-<p class="orange-text center-text">This paragraph is orange.</p>
-
-[Here is some more text]{.orange-text}
-
-
-:::{.center-text}
-here is a line 
-
-another line
-:::

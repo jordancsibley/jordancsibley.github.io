@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Jordan Sibley",
     "section": "",
-    "text": "Hi, I’m Jordan! Currently, I am a Master of Environmental Data Science (MEDS) student at the Bren School of Environmental Science & Management. During my time here at Bren, I aim to harness my analytical prowess in data science to drive impactful contributions to scientific research and sustainable solutions for marine coastal ecosystems.\n\nEducation\ntext here"
+    "text": "Hey! Currently, I am a Master of Environmental Data Science (MEDS) student at the Bren School of Environmental Science & Management. During my time here at Bren, I aim to harness my analytical prowess in data science to drive impactful contributions to scientific research and sustainable solutions for marine coastal ecosystems."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "text"
+    "text": "# This is a test of code color \nprint(3+2)\n\n[1] 5"
   },
   {
     "objectID": "DELETE-LATER/practice.html",
@@ -33,5 +33,26 @@
     "title": "About",
     "section": "What I do for fun",
     "text": "What I do for fun\n\nThis paragraph is orange.\n\nHere is some more text\n\nhere is a line\nanother line"
+  },
+  {
+    "objectID": "index.html#hi-im-jordan",
+    "href": "index.html#hi-im-jordan",
+    "title": "Jordan Sibley",
+    "section": "",
+    "text": "Currently, I am a Master of Environmental Data Science (MEDS) student at the Bren School of Environmental Science & Management. During my time here at Bren, I aim to harness my analytical prowess in data science to drive impactful contributions to scientific research and sustainable solutions for marine coastal ecosystems."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Jordan Sibley",
+    "section": "Education",
+    "text": "Education\nMaster of Environmental Data Science (June 2025) Bren School of Environmental Science & Management\nBachelor of Science in Aquatic Biology (June 2023) University of California, Santa Barbara"
+  },
+  {
+    "objectID": "index.html#jordan-sibley",
+    "href": "index.html#jordan-sibley",
+    "title": "Jordan Sibley",
+    "section": "",
+    "text": "Hey! Currently, I am a Master of Environmental Data Science (MEDS) student at the Bren School of Environmental Science & Management. During my time here at Bren, I aim to harness my analytical prowess in data science to drive impactful contributions to scientific research and sustainable solutions for marine coastal ecosystems."
   }
 ]
