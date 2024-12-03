@@ -54,5 +54,61 @@
     "title": "Jordan Sibley",
     "section": "",
     "text": "Hey! Currently, I am a Master of Environmental Data Science (MEDS) student at the Bren School of Environmental Science & Management. During my time here at Bren, I aim to harness my analytical prowess in data science to drive impactful contributions to scientific research and sustainable solutions for marine coastal ecosystems."
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "My Blog",
+    "section": "",
+    "text": "Remote Sensing Analysis of the Thomas Fire\n\n\n\nPython\n\n\nMEDS\n\n\nSpatial-Analysis\n\n\n\nThis project aims to explore the area impacted by the Thomas Fire across Ventura and Santa Barbara counties in 2017.\n\n\n\nJordan Sibley\n\n\nDec 3, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2024-12-03-thomas-fire/index.html",
+    "href": "posts/2024-12-03-thomas-fire/index.html",
+    "title": "Remote Sensing Analysis of the Thomas Fire",
+    "section": "",
+    "text": "I’m going to insert a footnote here1"
+  },
+  {
+    "objectID": "posts/2024-12-03-thomas-fire/index.html#this-is-my-first-section.",
+    "href": "posts/2024-12-03-thomas-fire/index.html#this-is-my-first-section.",
+    "title": "Remote Sensing Analysis of the Thomas Fire",
+    "section": "",
+    "text": "I’m going to insert a footnote here1"
+  },
+  {
+    "objectID": "posts/2024-12-03-thomas-fire/index.html#this-is-my-second",
+    "href": "posts/2024-12-03-thomas-fire/index.html#this-is-my-second",
+    "title": "Remote Sensing Analysis of the Thomas Fire",
+    "section": "This is my second",
+    "text": "This is my second\nHere’s my next paragraph2\nIm citing [1]\nIm going to site a journal article now[2]."
+  },
+  {
+    "objectID": "posts/2024-12-03-thomas-fire/index.html#footnotes",
+    "href": "posts/2024-12-03-thomas-fire/index.html#footnotes",
+    "title": "Remote Sensing Analysis of the Thomas Fire",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nHere is a new footnote↩︎\nHere is my second footnote↩︎"
+  },
+  {
+    "objectID": "posts/2024-12-03-thomas-fire/index.html#about",
+    "href": "posts/2024-12-03-thomas-fire/index.html#about",
+    "title": "Remote Sensing Analysis of the Thomas Fire",
+    "section": "About",
+    "text": "About\nThis notebook focuses on analyzing satellite imagery to assess the impact of the Thomas Fire, which occurred in 2017. Using Landsat 8 imagery and fire perimeter data, this notebook demonstrates how false color imaging techniques can be applied to identify fire scars and vegetation health."
+  },
+  {
+    "objectID": "posts/2024-12-03-thomas-fire/index.html#highlights-of-analysis",
+    "href": "posts/2024-12-03-thomas-fire/index.html#highlights-of-analysis",
+    "title": "Remote Sensing Analysis of the Thomas Fire",
+    "section": "Highlights of Analysis",
+    "text": "Highlights of Analysis\n\nData Wrangling: A portion of the notebook involves cleaning and preparing the Landsat dataset for analysis, including dropping the band dimension for better usablity.\nFalse Color Imaging: The notebook explores how false color images can highlight burn areas using shortwave infrared (SWIR) and near-infrared (NIR) bands to distinguish between burned land and healthy vegetation."
+  },
+  {
+    "objectID": "posts/2024-12-03-thomas-fire/index.html#data",
+    "href": "posts/2024-12-03-thomas-fire/index.html#data",
+    "title": "Remote Sensing Analysis of the Thomas Fire",
+    "section": "Data",
+    "text": "Data\n\nLandsat 8 Data: The Landsat data used in this analysis is the landsat8-2018-01-26-sb-simplified.nc dataset, which includes key spectral bands (e.g., shortwave infrared, near-infrared, and red) for the Santa Barbara region. This data is used to create both true color and false color images, with specific bands selected to highlight different land features.\nFire Perimeter Data: The fire perimeter data comes from CAL FIRE and is used to overlay the Thomas Fire’s boundary on the imagery. The selected dataset includes the fire perimeter for the 2017 Thomas Fire.\n\nReferences:\nEarth Resources Observation and Science (EROS) Center. (2020). Landsat 8-9 Operational Land Imager / Thermal Infrared Sensor Level-2, Collection 2 [dataset]. U.S. Geological Survey. https://doi.org/10.5066/P9OGBGM6\nCalifornia Department of Forestry and Fire Protection (CAL FIRE). (2023). California fire perimeters (all). Data.gov. https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436"
   }
 ]

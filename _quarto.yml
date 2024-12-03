@@ -16,6 +16,7 @@ website:
       - about.qmd
       - href: resources.qmd
         text: Resources
+      - href: posts.qmd
   page-footer:
     background: light
     left: Copyright 2024, Jordan Sibley
