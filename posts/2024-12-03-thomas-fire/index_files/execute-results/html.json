@@ -1,0 +1,17 @@
+{
+  "hash": "2636caad89acc319c5bf664136b47ee9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Blog post title\"\ndescription: \"A short catchy description of the blog post\"\nauthor: \n  - name: Jordan Sibley \n    url: http://jordancsibley.github.io/\n    affiliation: MEDS \n    affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science\n    \ndate: 2024-10-18\ncategories: [Quarto, MEDS]\ntoc: true\nbibliography: references.bib\ncsl: plos-computational-biology.csl\nimage: sci-first-post.jpeg\ncitation: \n  url: http://jordancsibley.github.io/posts/2014-10-18-my-first-post/\ndraft: true # prevents post from showing up until you are ready \n---\n\n\n\n\n## This is my first section.\n\nI'm going to insert a footnote here[^1]\n\n[^1]: Here is a new footnote\n\n## This is my second\n\nHere's my next paragraph[^2]\n\n[^2]: Here is my second footnote\n\nIm citing [@csik2022]\n\nIm going to site a journal article now[@gaynor2022].\n\nLook you can add code too!\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

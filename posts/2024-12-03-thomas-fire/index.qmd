@@ -9,7 +9,6 @@ author:
     
 date: 2024-12-03
 categories: [Python, MEDS, Spatial-Analysis]
-jupyter: python3
 toc: true
 bibliography: references.bib
 csl: plos-computational-biology.csl
@@ -62,14 +61,7 @@ Earth Resources Observation and Science (EROS) Center. (2020). Landsat 8-9 Opera
 
 California Department of Forestry and Fire Protection (CAL FIRE). (2023). California fire perimeters (all). Data.gov. https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436
 
-```{python}
-# Import libraries 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
 
-```
 
 
 
