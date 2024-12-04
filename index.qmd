@@ -9,15 +9,15 @@ about:
     - text: LinkedIn
       icon: linkedin
       href: https://www.linkedin.com/in/jordancsibley/
-      target: _blank
+#      target: _blank
     - text: GitHub 
       icon: github
       href: https://github.com/jordancsibley
-      target: _blank
+#      target: _blank
     - text: Email 
       icon: envelope
       href: mailto:jordan.c.sibley@gmail.com
-      target: _blank
+#      target: _blank
 ---
 
 ## Jordan Sibley  

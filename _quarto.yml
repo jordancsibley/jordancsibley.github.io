@@ -13,7 +13,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
       - href: resources.qmd
         text: Resources
       - href: posts.qmd
