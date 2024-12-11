@@ -1,5 +1,6 @@
 ---
-jupyter: eds220-env
+jupyter:
+  kernel: eds220-env
 title: "Remote Sensing Analysis of the Thomas Fire"
 description: "This project aims to explore the area impacted by the Thomas Fire across Ventura and Santa Barbara counties in 2017."
 author: 
