@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jordan Sibley">
+<meta name="dcterms.date" content="2024-12-03">
+<meta name="description" content="A statistical analysis of fish abundance in a wetland, comparing pre- and post-dredging years">
+
+<title>Exploring the Impacts of Dredging on Fish Abundance – Jordan Sibley</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../pics/jcs_logo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../pics/jcs_logo.png" alt="JCS logo" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">My Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Exploring the Impacts of Dredging on Fish Abundance</h1>
+                  <div>
+        <div class="description">
+          A statistical analysis of fish abundance in a wetland, comparing pre- and post-dredging years
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">MEDS</div>
+                <div class="quarto-category">Stats</div>
+              </div>
+                  </div>
+  </div>
+    
+  <div class="quarto-title-meta-author column-page-left">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author"><a href="http://jordancsibley.github.io/">Jordan Sibley</a> </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              <a href="https://bren.ucsb.edu/masters-programs/master-environmental-data-science">
+              MEDS
+              </a>
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta column-page-left">
+
+        
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 3, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link active" data-scroll-target="#set-up">Set Up</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a>
+  <ul class="collapse">
+  <li><a href="#join-data" id="toc-join-data" class="nav-link" data-scroll-target="#join-data">Join Data</a></li>
+  </ul></li>
+  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data visualization</a>
+  <ul class="collapse">
+  <li><a href="#boxplot-to-compare-fish-density-between-years." id="toc-boxplot-to-compare-fish-density-between-years." class="nav-link" data-scroll-target="#boxplot-to-compare-fish-density-between-years.">Boxplot to compare fish density between years.</a></li>
+  <li><a href="#fish-density-with-water-qualtity-parameters" id="toc-fish-density-with-water-qualtity-parameters" class="nav-link" data-scroll-target="#fish-density-with-water-qualtity-parameters">Fish density with water qualtity parameters</a></li>
+  </ul></li>
+  <li><a href="#linear-regression-models" id="toc-linear-regression-models" class="nav-link" data-scroll-target="#linear-regression-models">Linear Regression Models</a>
+  <ul class="collapse">
+  <li><a href="#model-1-multiple-linear-regressions-with-binary-variable" id="toc-model-1-multiple-linear-regressions-with-binary-variable" class="nav-link" data-scroll-target="#model-1-multiple-linear-regressions-with-binary-variable">Model 1: Multiple linear regressions with binary variable</a></li>
+  <li><a href="#model-2-test-for-interactions" id="toc-model-2-test-for-interactions" class="nav-link" data-scroll-target="#model-2-test-for-interactions">Model 2: Test for interactions</a></li>
+  <li><a href="#model-3-simple-it-down" id="toc-model-3-simple-it-down" class="nav-link" data-scroll-target="#model-3-simple-it-down">Model 3: Simple it down</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<p><img src="pics/csm_drone.png" class="img-fluid" alt="Carpinteria Salt Marsh"> ## Background</p>
+<p>Wetlands are among the most ecologically important ecosystems, providing habitat for a wide range of species, supporting biodiversity, and delivering critical ecosystem services such as flood control and water filtration. In California, wetlands are especially vital due to their rarity and the pressures they face from human development and climate change.</p>
+<p>One particularly important wetland is the Carpinteria Salt Marsh, located in southern California. The Carpinteria Salt Marsh Reserve, managed by the University of California, is home to a critically important estuary that supports a variety of sensitive plant and animal species <span class="citation" data-cites="ucreserves">[<a href="#ref-ucreserves" role="doc-biblioref">1</a>]</span>. The marsh encompasses wetland, subtidal channels, and upland habitats, and it serves as a regional nursery for species such as the California halibut. Additionally, it provides refuge for migratory birds and species of special concern. Adjacent to a sandy beach, rocky reefs, and kelp beds, the marsh plays an integral role in the local ecosystem.</p>
+<p>In the winter of 2023, severe rain storms deposited a significant amount of sediment into the marsh, requiring emergency dredging operations led by Santa Barbara County Flood Control <span class="citation" data-cites="orozco2023">[<a href="#ref-orozco2023" role="doc-biblioref">2</a>]</span>. While necessary for flood mitigation, dredging can have significant ecological impacts, including increased turbidity, altered hydrology, and stress to plant and animal life <span class="citation" data-cites="Johnston1981">[<a href="#ref-Johnston1981" role="doc-biblioref">3</a>]</span>. From April to July 2023, a hydraulic dredge operated 24/7 to remove sediment and reduce the risk of flooding to the surrounding area.</p>
+<p>Having worked in the Carpinteria Salt Marsh during the fall of 2023 as part of the SONGS Marine Mitigation team, I witnessed firsthand the changes caused by the dredging. Conversations with my colleagues often touched on concerns about the county’s approach to dredging, particularly regarding the lack of consultation with scientists and the arbitrary depth choices made during the operation. These experiences, combined with my curiosity to apply the statistical skills I’ve gained through my stats course (EDS 222), inspired me to explore the question:</p>
+<div class="center-bold">
+<p>Is there a difference in fish abundance between the pre-dredging (2022) and post-dredging (2023) field seasons?</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/dredge1.png" class="img-fluid figure-img"></p>
+<figcaption>Dredging in the Carpinteria Salt Marsh, April 2023. Source: Santa Barbara County Public Works Department</figcaption>
+</figure>
+</div>
+<section id="set-up" class="level2">
+<h2 class="anchored" data-anchor-id="set-up">Set Up</h2>
+<p>The packages needed for this project in R are <code>here</code> for reading in the data, and <code>tidyverse</code> and <code>dplyr</code> for data cleaning and visualization.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>See code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load important packages </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>This data used in this project comes from the <a href="https://marinemitigation.msi.ucsb.edu/">SONGS Marine Mitigation</a> database.The SONGS (San Onofre Nuclear Generating Station) San Dieguito Wetland Restoration mitigation monitoring program was designed to evaluate compliance of the restoration project with conditions of the SONGS permit as set out by the California Coastal Commission. To evaluate wetland performance of the restoration site, three comparison sites were selected: Tijuana Estuary, Mugu Lagoon, and Carpinteria Salt Marsh. Since 2012, yearly biological surveys have taken place to quantify water quality parameters and vegetation, fish, and invertebrate populations.</p>
+<p>The particular data I selected to use from this database are water quality and fish abundance data <span class="citation" data-cites="waterdata">[<a href="#ref-waterdata" role="doc-biblioref">4</a>]</span> <span class="citation" data-cites="fishdata">[<a href="#ref-fishdata" role="doc-biblioref">5</a>]</span>. The water quality data contains measurements of temperature, salinity, and dissolved oxygen that were collected by an in situ sensor that records data daily at 15 minute intervals.</p>
+<p>The fish abundance data includes the fish sampled during a technique called seining. Seining involves spreading out a fine mesh net to enclose a specific area of the channel or tidal creek and then another net is passed through the enclosed area to collect whichever fish are found on the bottom or in the waterway. Each wetland contained 12 different sites where seining was done; 6 sites were in a main channel and 6 sites in a tidal creek, and every site was sampled three times in one sampling season. I found this to be one of my favorite jobs while working for SONGS. It was really cool to bring the net up and see which kinds of fish were there. My favorite fish we would get were the California halibut and the Pacific staghorn sculpin, but most commonly we would get were topsmelt and California killifish.</p>
+<p><img src="pics/seine1.png" class="img-fluid" alt="SONGS sampling team seining for fish at Mugu Lagoon. Source: Instagram @ ucsb_marinemitigation"> If you want to access the data or explore the metadata, use the links below:</p>
+<ul>
+<li><a href="https://portal.edirepository.org/nis/mapbrowse?packageid=edi.657.5">Water Quality Data</a></li>
+<li><a href="https://portal.edirepository.org/nis/mapbrowse?packageid=edi.647.6">Fish Abundance Data</a></li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>See code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load in data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>water_quality <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">'posts'</span>, <span class="st">'2024-12-10-fish-stats'</span>, <span class="st">'data'</span>, <span class="st">'wetland_ts_water_quality.csv'</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>fish_abund <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">'posts'</span>, <span class="st">'2024-12-10-fish-stats'</span>, <span class="st">'data'</span>, <span class="st">'wetland_ts_fish_seine.csv'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h2>
+<section id="the-plan" class="level4">
+<h4 class="anchored" data-anchor-id="the-plan">The Plan:</h4>
+<p>In order to use the datasets for my analysis, I needed to complete a series of data cleaning tasks. My end goal was to transform the two dataset into one that contained the total number of fish sampled at each site at each day, and the average water quality parameters of that day.</p>
+<p>To accomplish this I had to make a series of choices. The first being how to aggregate the water quality data. The sensors collected readings every 15 minutes, resulting in a massive dataset that wasn’t practical for my analysis, especially since I needed to join it with the fish abundance data. One issue I realized was that the fish abundance data gave the date but not the time the fish were sampled. This is where having worked in the field proved invaluable. I decided that if I didn’t have an exact time, I would just find the average of the water quality parameters during the time I knew sampling took place. The time of sampling differed a bit each day of field season because the we had to do the field work during a specific tide window and it had to be during the daylight hours so that we could see (plus my bosses never liked us working too late in the afternoon). This knowledge led me to subset the water quality data from 6 AM until 4 PM, and then I found the average values of that day. While wetlands are a very dynamic environment with water quality parameters often changing quickly with the tides, I thought subsetting to the sampling hours was a bit better than just taking the average of the entire day.</p>
+<p>The next choice I had to make was on how I was going to present the fish abundance data. The original dataset included the species of fish and number sampled for each seine haul at every site. For a particular survey date, 2-3 sites would be seined and each site had 6 hauls. Every site had a A side and then a B side directly next to each other. Once the nets were set up, each seine area had 3 hauls of a net being passed through and the contents identified and counted. In order to get the total number of fished sampled at the site, I grouped the data by site (combining A and B) and by the date. This grouping made it easier to merge the fish data with the corresponding water quality data by date.</p>
+<p>The last step I decided to take was to find the density of the fish sampled rather than just keep it at total count. My rational with this was that for each seine, the distance across remained the same, but the total length and depth of the water varied by creek width or depth of channel. As the nets were set up and pulled by only six people, we wouldn’t set up the seine in areas were it was too deep to stand as it made it nearly impossible to pull the net across while keeping it in contact with the ground. To standardize for this uneven sampling area, I decide to calculate the total area of water sampled by multiplying the seine dimensions and average depth of the water. Then, I could calculate the density of fish sampled per meter squared by dividing the total fish count by the area. Once I started using this value as my fish abundance variable, I found it was much more consistent across the different sites. Using raw count values without considering the area might have lead to misleading results, as larger sampled areas usually led to higher counts.</p>
+<p>Here are the steps I took in my code to clean the data and prepare it for merging:</p>
+<p><strong>For Both data sets</strong>:</p>
+<ul>
+<li>Subset to years 2022 and 2023</li>
+<li>Filter to Carpinteria Salt Marsh (CSM)</li>
+</ul>
+<p><strong>For water quality data</strong>:</p>
+<ul>
+<li>Filter to survey hours (6am to 4pm) to get an average value for water quality parameters during the day</li>
+<li>Create new column with only the date, not the time, to prepare for joining later</li>
+<li>Calculate the average value over the time period for each water quality variable using the <code>group_by()</code> function for the date and then <code>summarise()</code> and <code>mean()</code> to find the average value of the daylight hours.</li>
+</ul>
+<p><strong>For fish abundance data</strong></p>
+<ul>
+<li>Remove unnecessary columns</li>
+<li>Create new column that gives water sampling area (seine area * depth)</li>
+<li>Find fish count per meter sampling area</li>
+<li>Group by date and site to find the total fish density for given site/day using <code>group_by()</code> and <code>summarise()</code>.</li>
+<li>Create a binary <code>dredging</code> column that gives a <code>0</code> value for the pre-dredging year (2022) and a <code>1</code> for the post-dredging year (2023)</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>See code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Water quality data cleaning </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter water quality data</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>water_quality_clean <span class="ot">&lt;-</span> water_quality <span class="sc">%&gt;%</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2022</span>, <span class="dv">2023</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wetland_code <span class="sc">==</span> <span class="st">"CSM"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(instrument_type, wetland_code)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">hour</span>(sample_datetime_gmt) <span class="sc">&gt;=</span> <span class="dv">6</span> <span class="sc">&amp;</span> <span class="fu">hour</span>(sample_datetime_gmt)) <span class="sc">%&gt;%</span>  <span class="co"># filter to sampling hours </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(sample_datetime_gmt)) <span class="co"># new column with just date</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate averages </span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>water_quality_ave <span class="ot">&lt;-</span> water_quality_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">temp_c_mean =</span> <span class="fu">mean</span>(temperature_degrees_c),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">salinity_ppt_mean =</span> <span class="fu">mean</span>(salinity_ppt), </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">salinity_practical_mean =</span> <span class="fu">mean</span>(salinity_practical),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">dissolved_oxygen_mean =</span> <span class="fu">mean</span>(dissolved_oxygen_concentration_mg_l))  </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Fish survey data cleaning </span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter fish abundance </span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>fish_abund_clean <span class="ot">&lt;-</span> fish_abund <span class="sc">%&gt;%</span> </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2022</span>, <span class="dv">2023</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(wetland_code <span class="sc">==</span> <span class="st">"CSM"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(survey, module_code, seine_section_code, seine_sample_length, seine_sample_width, species_id)) <span class="sc">%&gt;%</span>  <span class="co"># remove unnecessary columns</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sample_area_m2 =</span> seine_sample_area <span class="sc">*</span> depth) <span class="sc">%&gt;%</span>  <span class="co"># create count per m2</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">count_per_m2 =</span> count <span class="sc">/</span>sample_area_m2)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by date and site name to get total count of fish sampled</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>fish_total <span class="ot">&lt;-</span> fish_abund_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date, tc_mc_code, habitat_code) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_density_per_m2 =</span> <span class="fu">sum</span>(count_per_m2, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">habitat_code =</span> <span class="fu">recode</span>(habitat_code,</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"TC"</span> <span class="ot">=</span> <span class="st">"Tidal creek"</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"BNMC"</span> <span class="ot">=</span> <span class="st">"Main channel"</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column for the year</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>fish_total<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">year</span>(fish_total<span class="sc">$</span>date)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Create binary column for pre dredging (2022) and post dredging (2023)</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>fish_total<span class="sc">$</span>dredging <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(fish_total<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2023</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="join-data" class="level3">
+<h3 class="anchored" data-anchor-id="join-data">Join Data</h3>
+<p>Now that I have the average water quality values, I joined it with the fish abundance data so that for each sample day, there is corresponding water quality data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fish_water <span class="ot">&lt;-</span> <span class="fu">merge</span>(fish_total, water_quality_ave, <span class="at">by=</span><span class="st">"date"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When I merged the data it only has 67 rows when I was expecting it to have 72 to match the fish abundance data. As a test, I decided to do a left join of the fish data to keep all its dates intact and discover which dates were missing water quality data.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>See code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a left join</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fish_with_water_quality <span class="ot">&lt;-</span> fish_total <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(water_quality_ave, <span class="at">by =</span> <span class="st">"date"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which rows in fish_total do not have a match in water_quality_ave</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>missing_dates <span class="ot">&lt;-</span> fish_with_water_quality <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(temp_c_mean)) </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># View the missing dates</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>missing_dates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 10
+# Groups:   date, tc_mc_code [5]
+  date       tc_mc_code habitat_code total_density_per_m2  year dredging
+  &lt;date&gt;     &lt;chr&gt;      &lt;chr&gt;                       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+1 2023-09-06 CSM MC3    Main channel              0.0144   2023        1
+2 2023-09-06 CSM MC4    Main channel              0.0292   2023        1
+3 2023-09-06 CSM TC3    Tidal creek               0.00594  2023        1
+4 2023-09-11 CSM MC2    Main channel              0.00621  2023        1
+5 2023-09-11 CSM TC2    Tidal creek               0.0694   2023        1
+# ℹ 4 more variables: temp_c_mean &lt;dbl&gt;, salinity_ppt_mean &lt;dbl&gt;,
+#   salinity_practical_mean &lt;dbl&gt;, dissolved_oxygen_mean &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>The test showed that there was no water quality data for the dates 2023-09-06 and 2023-09-11. This meant that for 5 fish collection dates in the 2023 field season, there was no water quality data to accompany it. After checking the original water quality data it showed that there is a gap in data from 09-10 until 09-14. I couldn’t find a way to get that missing data, so I was forced to just exclude those sample dates from my analysis. It is important to recognize that any plots or tests in the rest of the project are comparing 36 sites for 2022 and 31 sites for 2023. While this is not ideal, I felt it was a small enough difference that I went on with my analysis.</p>
+</section>
+</section>
+<section id="data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization">Data visualization</h2>
+<p>After the data was cleaned, I created some plots to compare the fish density between the two years and see if there is a potential relationship with the water quality parameters.</p>
+<section id="boxplot-to-compare-fish-density-between-years." class="level3">
+<h3 class="anchored" data-anchor-id="boxplot-to-compare-fish-density-between-years.">Boxplot to compare fish density between years.</h3>
+<p>The log scale was applied to the y-axis because the data contains a wide range of fish density values, including many small values and only a few larger ones. This disparity can make it difficult to distinguish differences in densities, as the larger values dominate the visualization. The log transformation compresses the range of values, allowing for better visualization of variations while maintaining the relative differences.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>See code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box plot of fish density (log scaled)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_total, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(year), <span class="at">y =</span> total_density_per_m2, <span class="at">fill =</span> <span class="fu">factor</span>(year))) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#8C510A"</span>, <span class="st">"#01665E"</span>)) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span>  <span class="co"># Apply log scale to y-axis</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fish Total Density per m² (Log Scale)"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total Density per m² (log scale)"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Year"</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking at the two box plots, the overall range of the values seemed to be pretty similar. I would assume just based on this that there is no difference in the fish density between 2022 and 2023, but the linear models would give a better understand if that is true.</p>
+</section>
+<section id="fish-density-with-water-qualtity-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="fish-density-with-water-qualtity-parameters">Fish density with water qualtity parameters</h3>
+<p>To explore if the water quality parameter (temperature, salinity, and dissolved oxygen) had a potential relationship with fish density, each variable is plotted against the fish densities and a linear model line was included to view the general trends.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>See code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Fish density vs. each water quality  variable</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># water temp </span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_water, <span class="fu">aes</span>(<span class="at">x =</span> temp_c_mean, <span class="at">y =</span> total_density_per_m2, <span class="at">color =</span> <span class="fu">factor</span>(dredging))) <span class="sc">+</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"0"</span> <span class="ot">=</span> <span class="st">"#A6611A"</span>, <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"#5AB4AC"</span>),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Pre-Dredging"</span>, <span class="st">"Post-Dredging"</span>)) <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Dredging Status"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Average water temperature (C)"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Fish density per m2"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Water Temp vs Fish Density"</span>) <span class="sc">+</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>See code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dissolved oxygen </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_water, <span class="fu">aes</span>(<span class="at">x =</span> dissolved_oxygen_mean, <span class="at">y =</span> total_density_per_m2, <span class="at">color =</span> <span class="fu">factor</span>(dredging))) <span class="sc">+</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"0"</span> <span class="ot">=</span> <span class="st">"#A6611A"</span>, <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"#5AB4AC"</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Pre-Dredging"</span>, <span class="st">"Post-Dredging"</span>)) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Dredging Status"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Average dissolved oxygen concentration (mg/L)"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Fish density per m2"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Dissolved Oxygen vs Fish Density"</span>) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>See code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># salinity </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_water, <span class="fu">aes</span>(<span class="at">x =</span> salinity_ppt_mean, <span class="at">y =</span> total_density_per_m2, <span class="at">color =</span> <span class="fu">factor</span>(dredging))) <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"0"</span> <span class="ot">=</span> <span class="st">"#A6611A"</span>, <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"#5AB4AC"</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Pre-Dredging"</span>, <span class="st">"Post-Dredging"</span>)) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Dredging Status"</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Average salinity (ppt)"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Fish density per m2"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Salinity vs Fish Density"</span>) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The scatter plots do not show a super obvious trend between the water quality variables and the fish density between 2022 and 2023. I did think it was interesting that for the 2022 data, the range of dissolved oxygen and salinity is much more narrow than the 2023 data. I am curious if this might be an indicator to the impacts of the dredging. My hypothesis is the deeper channels caused by the dredging could increase dissolved oxygen by improving water flow and removing organic material and salinity could rise due to enhanced tidal exchange. I can’t tell if that is what happened here by just looking at the data, but it is interesting to consider.</p>
+</section>
+</section>
+<section id="linear-regression-models" class="level2">
+<h2 class="anchored" data-anchor-id="linear-regression-models">Linear Regression Models</h2>
+<section id="model-1-multiple-linear-regressions-with-binary-variable" class="level3">
+<h3 class="anchored" data-anchor-id="model-1-multiple-linear-regressions-with-binary-variable">Model 1: Multiple linear regressions with binary variable</h3>
+<p><strong>Dependent variable</strong>: fish density</p>
+<p><strong>Predictors</strong>: water quality parameters and binary dredging variable</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression model of water quality parameters + dredging </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>abund_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(total_density_per_m2 <span class="sc">~</span> temp_c_mean <span class="sc">+</span> salinity_ppt_mean <span class="sc">+</span> dissolved_oxygen_mean <span class="sc">+</span> dredging, <span class="at">data =</span> fish_water)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(abund_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = total_density_per_m2 ~ temp_c_mean + salinity_ppt_mean + 
+    dissolved_oxygen_mean + dredging, data = fish_water)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.04745 -0.03314 -0.01856 -0.00035  0.48831 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)           -0.2030981  0.2799882  -0.725    0.471
+temp_c_mean            0.0120304  0.0125339   0.960    0.341
+salinity_ppt_mean     -0.0008393  0.0026287  -0.319    0.751
+dissolved_oxygen_mean  0.0032059  0.0041702   0.769    0.445
+dredging              -0.0082092  0.0254714  -0.322    0.748
+
+Residual standard error: 0.07801 on 62 degrees of freedom
+Multiple R-squared:  0.02903,   Adjusted R-squared:  -0.03362 
+F-statistic: 0.4634 on 4 and 62 DF,  p-value: 0.7623</code></pre>
+</div>
+</div>
+<p><strong>Results</strong>: No significant (less than 0.05) p-values.</p>
+</section>
+<section id="model-2-test-for-interactions" class="level3">
+<h3 class="anchored" data-anchor-id="model-2-test-for-interactions">Model 2: Test for interactions</h3>
+<p>To explore if the effect of water quality differs between pre- and post-dredging periods, I included interaction terms:</p>
+<p><strong>Dependent variable</strong>: fish density</p>
+<p><strong>Predictors</strong>: water quality parameters with dredging interaction</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear model with interactions between water quality &amp; dredging</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>model_interaction <span class="ot">&lt;-</span> <span class="fu">lm</span>(total_density_per_m2 <span class="sc">~</span> temp_c_mean <span class="sc">*</span> dredging <span class="sc">+</span> salinity_ppt_mean <span class="sc">*</span> dredging <span class="sc">+</span> dissolved_oxygen_mean <span class="sc">*</span> dredging, <span class="at">data =</span> fish_water)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_interaction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = total_density_per_m2 ~ temp_c_mean * dredging + 
+    salinity_ppt_mean * dredging + dissolved_oxygen_mean * dredging, 
+    data = fish_water)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.05947 -0.03000 -0.01833 -0.00420  0.47359 
+
+Coefficients:
+                                Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)                    -0.341131   0.427079  -0.799    0.428
+temp_c_mean                     0.020148   0.019296   1.044    0.301
+dredging                        0.198173   0.602258   0.329    0.743
+salinity_ppt_mean              -0.003265   0.008626  -0.379    0.706
+dissolved_oxygen_mean           0.012797   0.020352   0.629    0.532
+temp_c_mean:dredging           -0.011827   0.027544  -0.429    0.669
+dredging:salinity_ppt_mean      0.002842   0.009121   0.312    0.756
+dredging:dissolved_oxygen_mean -0.010560   0.020842  -0.507    0.614
+
+Residual standard error: 0.07962 on 59 degrees of freedom
+Multiple R-squared:  0.03749,   Adjusted R-squared:  -0.0767 
+F-statistic: 0.3283 on 7 and 59 DF,  p-value: 0.9381</code></pre>
+</div>
+</div>
+<p><strong>Results</strong>: No siginificant p-values.</p>
+<p>I did not find statistically significant relationships between fish density and water quality parameters (temperature, dissolved oxygen, salinity) or dredging activity. This suggests these factors may not have had a strong or measurable impact on fish density in my dataset.</p>
+</section>
+<section id="model-3-simple-it-down" class="level3">
+<h3 class="anchored" data-anchor-id="model-3-simple-it-down">Model 3: Simple it down</h3>
+<p>Now, lets see more simply if there is a difference in fish density between the two years separate of the water quality variables:</p>
+<p><strong>Dependent variable</strong>: fish density</p>
+<p><strong>Predictor</strong>: binary dredging variable</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression of fish density with only dredging as a factor</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>model_dredging <span class="ot">&lt;-</span> <span class="fu">lm</span>(total_density_per_m2 <span class="sc">~</span> dredging, <span class="at">data =</span> fish_water)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_dredging)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = total_density_per_m2 ~ dredging, data = fish_water)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.04130 -0.03134 -0.02207 -0.00260  0.49472 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)  0.04130    0.01282   3.222  0.00199 **
+dredging    -0.01582    0.01884  -0.839  0.40429   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.0769 on 65 degrees of freedom
+Multiple R-squared:  0.01073,   Adjusted R-squared:  -0.004494 
+F-statistic: 0.7047 on 1 and 65 DF,  p-value: 0.4043</code></pre>
+</div>
+</div>
+<p><strong>Result</strong>: p-value is 0.40429. This is not a significant p-value which means we do not have strong evidence that there is a difference in fish abundances between 2022 and 2023.</p>
+</section>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>The results of my analysis suggest that the factors I considered may not have had a strong or measurable impact on fish density in this dataset. However, this does not necessarily mean there is no relationship—it simply means that, with the current dataset, model, and variables, I did not find evidence to support one. It is likely that other unmeasured variables play a more significant role in influencing fish densities.</p>
+<p>One limitation of this study is the timing of the sampling. Since the data was collected during an annual field season between July and September, any short-term impacts of dredging may have dissipated by the time of sampling. A more focused dataset, capturing conditions immediately before, during, and after dredging, could provide a clearer picture of its effects. Additionally, the sample size—36 points in 2022 and 31 in 2023—may not have been sufficient for detecting subtle changes in fish density. While larger datasets would provide more robust insights, I now have a much deeper appreciation for the effort required to collect each data point. Having been part of the fieldwork team, I understand the physical and logistical challenges of collecting this data, often under harsh conditions. This perspective reminds me to respect the immense effort behind every dataset used in an analysis.</p>
+<p>Finally, while insignificant p-values can be disappointing, the results of this study might indicate something positive: there may truly be no significant difference in fish densities between the pre- and post-dredging field seasons. This could suggest that dredging did not negatively impact fish populations in the salt marsh. If given more time, it would be valuable to complement this study with an analysis on the sessile organisms that live in the marsh which could not move out of the path of the dredge and may have been more directly affected.</p>
+<p>To check out more of my analysis, see my <a href="https://github.com/jordancsibley/wetland-fish-abundance">GitHub Repository</a> for this project.</p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-ucreserves" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Carpinteria Salt Marsh Reserve. The Regents of the University of California; 2024. Available: <a href="https://csmr.nrs.ucsb.edu/about/">https://csmr.nrs.ucsb.edu/about/</a></div>
+</div>
+<div id="ref-orozco2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Orozco L. Emergency dredging project trying to prevent a salt marsh from flooding the Carpinteria area. 1 May 2023. Available: <a href="https://www.kclu.org/local-news/2023-06-01/emergency-dreging-project-continues-to-try-to-prevent-a-salt-marsh-from-flooding-the-carpinteria-area">https://www.kclu.org/local-news/2023-06-01/emergency-dreging-project-continues-to-try-to-prevent-a-salt-marsh-from-flooding-the-carpinteria-area</a></div>
+</div>
+<div id="ref-Johnston1981" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Johnston S. Estuarine dredge and fill activities: A review of impacts. Sep 1981. Available: <a href="https://doi.org/10.1007/BF01866820">https://doi.org/10.1007/BF01866820</a></div>
+</div>
+<div id="ref-waterdata" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Schroeter SC. UCSB SONGS Mitigation Monitoring: Wetland Survey - Water Quality ver 5. Environmental Data Initiative; 2024. Available: <a href="https://doi.org/10.6073/pasta/871704db74361bc24665c9ff93c92004">https://doi.org/10.6073/pasta/871704db74361bc24665c9ff93c92004</a></div>
+</div>
+<div id="ref-fishdata" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Schroeter SC. UCSB SONGS Mitigation Monitoring: Wetland Survey - Fish Abundance ver 6. Environmental Data Initiative; 2024. Available: <a href="https://doi.org/10.6073/PASTA/FE2F3342046104CFC8CED25E0107AAFD">https://doi.org/10.6073/PASTA/FE2F3342046104CFC8CED25E0107AAFD</a></div>
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sibley2024,
+  author = {Sibley, Jordan},
+  title = {Exploring the {Impacts} of {Dredging} on {Fish} {Abundance}},
+  date = {2024-12-03},
+  url = {http://jordancsibley.github.io/posts/2024-12-10-fish-stats/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-sibley2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+<div class="">Sibley J. Exploring the Impacts of Dredging on
+Fish Abundance. 3 Dec 2024. Available: <a href="http://jordancsibley.github.io/posts/2024-12-10-fish-stats/">http://jordancsibley.github.io/posts/2024-12-10-fish-stats/</a></div>
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Jordan Sibley</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This website is built with <i class="fa-brands fa-github" title="the octocat github icon" aria-label="github"></i>, <i class="fa-brands fa-r-project" title="the R icon" aria-label="r-project"></i>, and Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

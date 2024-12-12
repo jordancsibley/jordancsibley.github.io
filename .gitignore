@@ -1,4 +1,4 @@
-.Rproj.user
+'.Rproj.user
 .Rhistory
 .Rdata
 .httr-oauth
@@ -8,3 +8,4 @@
 /.quarto/
 
 /posts/2024-12-10-fish-stats/data/
+/posts/2024-12-10-fish-stats/pics/

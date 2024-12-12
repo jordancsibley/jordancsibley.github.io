@@ -1,0 +1,45 @@
+usethis::use_git()
+usethis::use_github()
+usethis::git_default_branch_rename(from = "master", to = "main")
+usethis::git_default_branch_rename(from = "master", to = "main")
+ggplot(palmerpenguins::penguins, aes(x = flipper_length_mm))+
+geom_hist()
+#| warning: false
+#| message: false
+#| echo: false
+library(tidyverse)
+library(palmerpenguins)
+ggplot(palmerpenguins::penguins, aes(x = flipper_length_mm))+
+geom_hist()
+#| warning: false
+#| message: false
+#| echo: false
+library(tidyverse)
+library(palmerpenguins)
+ggplot(palmerpenguins::penguins, aes(x = flipper_length_mm))+
+geom_bar()
+reticulate::repl_python()
+Yes
+reticulate::repl_python()
+Yes
+reticulate::repl_python(Yes)
+reticulate::repl_python()
+reticulate::py_config()
+library(reticulate)
+use_python("/Users/jordansibley/opt/anaconda3/envs/myenv/bin/python", required = TRUE)
+reticulate::repl_python()
+reticulate::repl_python()
+reticulate::py_config()
+library(reticulate)
+use_python("/Users/jordansibley/miniforge3/envs/myenv/bin/python", required = TRUE)
+library(reticulate)
+use_python("/Users/jordansibley/opt/anaconda3/envs/myenv/bin/python", required = TRUE)
+reticulate::repl_python()
+reticulate::repl_python()
+library(reticulate)
+reticulate::use_python(“/Users/jordansibley/opt/anaconda3/envs/eds-220-env-arm64/bin/python", required = TRUE)
+library(reticulate)
+reticulate::use_python("/Users/jordansibley/opt/anaconda3/envs/eds-220-env-arm64/bin/python", required = TRUE)
+reticulate::py_config()
+library(reticulate)
+reticulate::use_python("/Users/jordansibley/opt/anaconda3/envs/eds-220-env-arm64/bin/python", required = TRUE)
