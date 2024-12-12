@@ -225,7 +225,8 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#set-up" id="toc-set-up" class="nav-link active" data-scroll-target="#set-up">Set Up</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set Up</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a>
   <ul class="collapse">
@@ -253,7 +254,14 @@ div.csl-indent {
 
 
 
-<p><img src="pics/csm_drone.png" class="img-fluid" alt="Carpinteria Salt Marsh"> ## Background</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/csm_drone.png" class="img-fluid figure-img"></p>
+<figcaption>Carpinteria Salt Marsh. Source: Channel Islands Restoration</figcaption>
+</figure>
+</div>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
 <p>Wetlands are among the most ecologically important ecosystems, providing habitat for a wide range of species, supporting biodiversity, and delivering critical ecosystem services such as flood control and water filtration. In California, wetlands are especially vital due to their rarity and the pressures they face from human development and climate change.</p>
 <p>One particularly important wetland is the Carpinteria Salt Marsh, located in southern California. The Carpinteria Salt Marsh Reserve, managed by the University of California, is home to a critically important estuary that supports a variety of sensitive plant and animal species <span class="citation" data-cites="ucreserves">[<a href="#ref-ucreserves" role="doc-biblioref">1</a>]</span>. The marsh encompasses wetland, subtidal channels, and upland habitats, and it serves as a regional nursery for species such as the California halibut. Additionally, it provides refuge for migratory birds and species of special concern. Adjacent to a sandy beach, rocky reefs, and kelp beds, the marsh plays an integral role in the local ecosystem.</p>
 <p>In the winter of 2023, severe rain storms deposited a significant amount of sediment into the marsh, requiring emergency dredging operations led by Santa Barbara County Flood Control <span class="citation" data-cites="orozco2023">[<a href="#ref-orozco2023" role="doc-biblioref">2</a>]</span>. While necessary for flood mitigation, dredging can have significant ecological impacts, including increased turbidity, altered hydrology, and stress to plant and animal life <span class="citation" data-cites="Johnston1981">[<a href="#ref-Johnston1981" role="doc-biblioref">3</a>]</span>. From April to July 2023, a hydraulic dredge operated 24/7 to remove sediment and reduce the risk of flooding to the surrounding area.</p>
@@ -267,6 +275,7 @@ div.csl-indent {
 <figcaption>Dredging in the Carpinteria Salt Marsh, April 2023. Source: Santa Barbara County Public Works Department</figcaption>
 </figure>
 </div>
+</section>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set Up</h2>
 <p>The packages needed for this project in R are <code>here</code> for reading in the data, and <code>tidyverse</code> and <code>dplyr</code> for data cleaning and visualization.</p>
@@ -285,7 +294,13 @@ div.csl-indent {
 <p>This data used in this project comes from the <a href="https://marinemitigation.msi.ucsb.edu/">SONGS Marine Mitigation</a> database.The SONGS (San Onofre Nuclear Generating Station) San Dieguito Wetland Restoration mitigation monitoring program was designed to evaluate compliance of the restoration project with conditions of the SONGS permit as set out by the California Coastal Commission. To evaluate wetland performance of the restoration site, three comparison sites were selected: Tijuana Estuary, Mugu Lagoon, and Carpinteria Salt Marsh. Since 2012, yearly biological surveys have taken place to quantify water quality parameters and vegetation, fish, and invertebrate populations.</p>
 <p>The particular data I selected to use from this database are water quality and fish abundance data <span class="citation" data-cites="waterdata">[<a href="#ref-waterdata" role="doc-biblioref">4</a>]</span> <span class="citation" data-cites="fishdata">[<a href="#ref-fishdata" role="doc-biblioref">5</a>]</span>. The water quality data contains measurements of temperature, salinity, and dissolved oxygen that were collected by an in situ sensor that records data daily at 15 minute intervals.</p>
 <p>The fish abundance data includes the fish sampled during a technique called seining. Seining involves spreading out a fine mesh net to enclose a specific area of the channel or tidal creek and then another net is passed through the enclosed area to collect whichever fish are found on the bottom or in the waterway. Each wetland contained 12 different sites where seining was done; 6 sites were in a main channel and 6 sites in a tidal creek, and every site was sampled three times in one sampling season. I found this to be one of my favorite jobs while working for SONGS. It was really cool to bring the net up and see which kinds of fish were there. My favorite fish we would get were the California halibut and the Pacific staghorn sculpin, but most commonly we would get were topsmelt and California killifish.</p>
-<p><img src="pics/seine1.png" class="img-fluid" alt="SONGS sampling team seining for fish at Mugu Lagoon. Source: Instagram @ ucsb_marinemitigation"> If you want to access the data or explore the metadata, use the links below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pics/seine1.png" class="img-fluid figure-img"></p>
+<figcaption>SONGS sampling team seining for fish at Mugu Lagoon. Source: Instagram @ ucsb_marinemitigation</figcaption>
+</figure>
+</div>
+<p>If you want to access the data or explore the metadata, use the links below:</p>
 <ul>
 <li><a href="https://portal.edirepository.org/nis/mapbrowse?packageid=edi.657.5">Water Quality Data</a></li>
 <li><a href="https://portal.edirepository.org/nis/mapbrowse?packageid=edi.647.6">Fish Abundance Data</a></li>

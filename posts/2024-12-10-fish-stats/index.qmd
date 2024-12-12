@@ -24,7 +24,9 @@ editor_options:
   chunk_output_type: console
 ---
 
-![Carpinteria Salt Marsh](pics/csm_drone.png) 
+![Carpinteria Salt Marsh. Source: Channel Islands Restoration](pics/csm_drone.png) 
+
+
 ## Background
 
 Wetlands are among the most ecologically important ecosystems, providing habitat for a wide range of species, supporting biodiversity, and delivering critical ecosystem services such as flood control and water filtration. In California, wetlands are especially vital due to their rarity and the pressures they face from human development and climate change. 
@@ -67,6 +69,8 @@ The particular data I selected to use from this database are water quality and f
 The fish abundance data includes the fish sampled during a technique called seining. Seining involves spreading out a fine mesh net to enclose a specific area of the channel or tidal creek and then another net is passed through the enclosed area to collect whichever fish are found on the bottom or in the waterway. Each wetland contained 12 different sites where seining was done; 6 sites were in a main channel and 6 sites in a tidal creek, and every site was sampled three times in one sampling season. I found this to be one of my favorite jobs while working for SONGS. It was really cool to bring the net up and see which kinds of fish were there. My favorite fish we would get were the California halibut and the Pacific staghorn sculpin, but most commonly we would get were topsmelt and California killifish. 
 
 ![SONGS sampling team seining for fish at Mugu Lagoon. Source: Instagram @ ucsb_marinemitigation](pics/seine1.png)
+
+
 If you want to access the data or explore the metadata, use the links below: 
 
 - [Water Quality
