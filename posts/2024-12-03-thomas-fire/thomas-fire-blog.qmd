@@ -20,14 +20,16 @@ citation:
 draft: false # prevents post from showing up until you are ready 
 ---
 
+![Los Padres National Forest, December 2017](thomas-fire.jpeg) 
+
 ## About 
 
-This project provides an in-depth analysis of the Thomas Fire, which burned over 280,000 acres in Ventura and Santa Barbara counties in December 2017. The first part of the analysis examines air quality impacts using Air Quality Index (AQI) data from the US Environmental Protection Agency, visualizing how air quality changed over time during and after the fire. The second part focuses on the fire's physical impact, leveraging Landsat 8 satellite imagery and historic fire perimeter data. By applying false-color imaging techniques, this analysis highlights fire scars and assesses vegetation health in the affected areas.
+This project provides an in-depth analysis of the Thomas Fire, which burned over 280,000 acres in Ventura and Santa Barbara counties in December 2017. The first part of the analysis examines air quality impacts using Air Quality Index (AQI) data from the US Environmental Protection Agency, visualizing how air quality changed over time during and after the fire. The second part focuses on the fire’s physical impact, leveraging Landsat 8 satellite imagery and historic fire perimeter data. By applying false-color imaging techniques, this analysis highlights fire scars and assesses vegetation health in the affected areas.
 
 
 ## Highlights of Analysis 
 
-- **Data Wrangling**: A portion of the project involves cleaning and preparing the data for analysis. This includes updating data types of the AQI data and dropping the band dimension for the Landsat dataset for better usablity.
+- **Data Wrangling**: A portion of the project involves cleaning and preparing the data for analysis. This includes updating data types of the AQI data and dropping the band dimension for the Landsat dataset for better usability.
 
 - **Working with different data types**: This analysis utilizes many different data types which required unique packages for reading in. The AQI data was read in using `pandas` from an online repository, while the spatial data required `rioxarray` and `geopandas`. 
 
@@ -37,19 +39,12 @@ See more about my analyses on the [GitHub repository](https://github.com/jordanc
 
 ## Data 
 
-- **Air Quality Index (AQI) Data** The AQI data comes from the US Environmental Protection Agency. It includes daily air quality index score for Santa Barbara county.  
+- **Air Quality Index (AQI) Data**: The AQI data comes from the US Environmental Protection Agency and includes the daily air quality index score for Santa Barbara County.
 
-- **Landsat 8 Data**: The Landsat data used in this analysis is the landsat8-2018-01-26-sb-simplified.nc dataset, which includes key spectral bands (e.g., shortwave infrared, near-infrared, and red) for the Santa Barbara region. This data is used to create both true color and false color images, with specific bands selected to highlight different land features.
+- **Landsat 8 Data**: The Landsat data used in this analysis is the landsat8-2018-01-26-sb-simplified.nc dataset, which includes key spectral bands (e.g., shortwave infrared, near-infrared, and red) for the Santa Barbara region. This data is used to create both true-color and false-color images, with specific bands selected to highlight different land features.
 
-- **Fire Perimeter Data**: The fire perimeter data comes from CAL FIRE and is used to overlay the Thomas Fire’s boundary on the imagery. The selected dataset includes the fire perimeter for the 2017 Thomas Fire which was extracted from the larger database and then saved as a shapefile. The process of selecting this fire perimeter can be seen in this [Jupyter notebook](https://github.com/jordancsibley/thomas-fire-analysis/blob/main/notebooks%20/fire-perimeter-thomas-fire.ipynb). 
+- **Fire Perimeter Data**:  The fire perimeter data comes from CAL FIRE and is used to overlay the Thomas Fire’s boundary on the imagery. The selected dataset includes the fire perimeter for the 2017 Thomas Fire which was extracted from the larger database and then saved as a shapefile. The process of selecting this fire perimeter can be seen in this [Jupyter notebook](https://github.com/jordancsibley/thomas-fire-analysis/blob/main/notebooks%20/fire-perimeter-thomas-fire.ipynb). 
 
-**References and Data Sources**:
-
-Environmental Protection Agency (EPA). Air Quality Index (AQI) Data. https://aqs.epa.gov/aqsweb/airdata/download_files.html (Accessed October, 2024)
-
-Earth Resources Observation and Science (EROS) Center. (2020). Landsat 8-9 Operational Land Imager / Thermal Infrared Sensor Level-2, Collection 2 [dataset]. U.S. Geological Survey. https://doi.org/10.5066/P9OGBGM6 (Access Novemeber, 2024)
-
-California Department of Forestry and Fire Protection (CAL FIRE). (2023). California fire perimeters (all). Data.gov. https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436 (Accessed November, 2024)
 
 ### Set Up  
 
@@ -112,10 +107,10 @@ thomas = gpd.read_file(thomas_fp)
 
 In order to use the dataset that includes the daily AQI, the following steps were taken: 
 
-- **Clean column names**: The columns were converted to lower snake case through the functions `.str.lower()` and `.str.replace()` to remove the spaces inbetween the words. This allows for better readablity and compatiblity with  certain python functions. 
+- **Clean column names**: The columns were converted to lower snake case through the functions `.str.lower()` and `.str.replace()` to remove the spaces in between the words. This allows for better readability and compatibility with certain Python functions.
 - **Filter to SB County**: The dataset included AQI scores for all counties in the U.S. It needed to be filtered to just include the county of interest. 
 - **Drop columns**: Columns were removed using `.drop()` in order to only leave the columns needed for analysis.
-- **Convert date column**: The orginal date column was in the data type `object`. By using `pandas.to_datetime` it was changed to a datetime data type which will make it easier to extract certain dates and for creating a time series graph. 
+- **Convert date column**: The original date column was in the data type `object`. By using `pandas.to_datetime` it was changed to a datetime data type which will make it easier to extract certain dates and for creating a time series graph. 
 
 ```{python}
 #| tags: []
@@ -141,7 +136,7 @@ aqi_sb = aqi_sb.set_index('date')
 
 ### Calculate Rolling Averages 
 
-While the data provides the daily AQI score, it is sometimes better for visibility in an plot if a rolling average is calculated. For this particular plot, the rolling 5 day average was calculated using the `pandas` method `rolling()` and `mean()` to find the average AQI score over the 5 day window. 
+While the data provides the daily AQI score, it is sometimes better for visibility in a plot if an average is calculated over a certain time range. This will make the plot easier to read by minimizing the impact by outliers to viewing the overall trend. For this particular plot, the rolling 5 day average was calculated using the `pandas` method `rolling()` and `mean()` to find the average AQI score over the 5 day window. 
 
 ```{python}
 #| tags: []
@@ -181,14 +176,13 @@ plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%b-%y'))
 plt.legend()
 ```
 
-Looking at the plot, there is a large spike in the daily and average AQI score right before Janurary 2018. The Thomas Fire took place from December 4, 2017, until its containment on January 12, 2018 so it makes sense to see a higher AQI score during this time period due to the smoke and air contaminates as a result of the fire. 
+Looking at the plot, there is a large spike in the daily and average AQI score right before January 2018. The Thomas Fire took place from December 4, 2017, until its containment on January 12, 2018 so it is reasonable to see a higher AQI score during this time period due to the smoke and air contaminants as a result of the fire.
 
 ## Spatial Analysis 
 
-The visualize the extent of the Thomas Fire, Landsat 8 imagery can be used to view satelite images in their true (Red Green Blue bands) colors and also by visualizing the shortwave infrared bands and near infrared bands. These bands are able to better analyze the damage done by fires than just a satelite image due to their distinct responses to vegetation, soil, and water content. 
+To visualize the extent of the Thomas Fire, Landsat 8 imagery can be used to view satellite images in their true (Red Green Blue bands) colors and also by visualizing the shortwave infrared bands and near infrared bands. These bands are able to better analyze the damage done by fires than just a satellite image due to their distinct responses to vegetation, soil, and water content.
 
-
-Landsat data consists of satellite imagery collected by the Landsat program, a series of Earth-observing satellites jointly managed by NASA and the U.S. Geological Survey (USGS). Landsat sensors capture data in multiple spectral bands, including visible light, near-infrared (NIR), shortwave infrared (SWIR), and thermal infrared (TIR). 
+Landsat data consists of satellite imagery collected by the Landsat program, a series of Earth-observing satellites jointly managed by NASA and the U.S. Geological Survey (USGS). Landsat sensors capture data in multiple spectral bands, including visible light, near-infrared (NIR), shortwave infrared (SWIR), and thermal infrared (TIR).
 
 Here are articles that go into more depth about Landsat data use: 
 
@@ -214,7 +208,7 @@ print(landsat.rio.bounds(), '\n')
 print('CRS: ', landsat.rio.crs)
 ```
 
-The landsat data is an xarray that contains the band information. The dimensions are x and y and also band that just contains the interger 1. The data variables of the xarray are the band types which are red, green, blue, near infrared (nir08), and the shortwave infrared (swir22).
+The landsat data is an xarray that contains the band information. The dimensions are x and y and also band that just contains the integer 1. The data variables of the xarray are the band types which are red, green, blue, near infrared (nir08), and the shortwave infrared (swir22).
 
 ## Data Cleaning 
 
@@ -231,7 +225,7 @@ landsat = landsat.squeeze().drop_vars('band')
 landsat
 ```
 
-Now we are left with the dimensions `x` and `y` which are coordinates that hold spectal band information needed to produce the landsat map images. 
+Now we are left with the dimensions `x` and `y` which are coordinates that hold spectral band information needed to produce the landsat map images. 
 
 ## True Color (RGB) Image 
 
@@ -245,7 +239,7 @@ landsat[['red', 'green', 'blue']].to_array().plot.imshow(robust=True)
 
 ## False Color Image
 
-Since you are able to select which bands go in each channel, you can use the colors to view different spectral bands. In the following map, shortwave infrared (SWIR) in placed in the red channel, near infrared (NIR) is placed in the green channel, and red wavelength is placed in the blue channel. 
+Since you are able to select which bands go in each channel, you can use the colors to view different spectral bands. In the following map, shortwave infrared (SWIR) is placed in the red channel, near infrared (NIR) is placed in the green channel, and red wavelength is placed in the blue channel.
 
 ```{python}
 #| tags: []
@@ -253,10 +247,10 @@ Since you are able to select which bands go in each channel, you can use the col
 landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust=True)
 ```
 
-The RGB image and False color image were produced by selecting certian bands to go in channels that display those colors. Notice in the two maps the `robust` parameter within `plot.imshow()`. When set to `True`, it adjusts the color scale to exlude outliers and improving visualization.
+The RGB image and False color image were produced by selecting certian bands to go in channels that display those colors. Notice in the two maps the `robust` parameter within `plot.imshow()`. When set to `True`, it adjusts the color scale to exclude outlines and improving visualization.
 
 
-Now let's bring it all together and include the fire boundary that I extracted from the CAL FIRE data base. Bofore I can use the fire boundary in my map, I need to ensure it is in the same coordidant reference system. The following code reprojects the CRS if need be before moving forward. 
+Now let’s bring it all together and include the fire boundary that I extracted from the CAL FIRE database. Before I can use the fire boundary in my map, I need to ensure it is in the same coordinate reference system. The following code reprojects the CRS if need be before moving forward. 
 
 ```{python}
 #| tags: []
@@ -272,7 +266,7 @@ With the perimeter data CRS now set to match the landsat data, they can be plott
 
 Here are some highlights of the map creation: 
 
-- `matplotlib.patches` is utilzed to create a custom legend that displays what colors correspond to which bands. This submodule provides various geometric shapes which can be added to plots for annotating or highlighting specific areas, but I find it helpful to use to create legends for plots with non-standard markers. 
+- `matplotlib.patches` is utilized to create a custom legend that displays what colors correspond to which bands. This sub module provides various geometric shapes which can be added to plots for annotating or highlighting specific areas, but I find it helpful to use to create legends for plots with non-standard markers. 
 - `Scalebar()` is used to include a 50 km scale bar which gives the map a relative size and also provide more context to the extent of the fire's range. 
 
 ```{python}
@@ -328,7 +322,16 @@ ax.set_ylabel("")
 plt.show()
 ```
 
-**Figure Description**: This map highlights the area of Santa Barbara and Ventura counties affected by the Thomas Fire, which burned over 280,000 acres from December 4, 2017, until its containment on January 12, 2018. The fire's total burn perimeter is outlined in dark red. The false-color image incorporates shortwave infrared (SWIR) in red, which is particularly effective for identifying areas of burn damage, as newly burned land strongly reflects SWIR wavelengths. The near-infrared (NIR) band is represented in green, highlighting healthy vegetation, as plants strongly reflect NIR.
+**Figure Description**: This map highlights the area of Santa Barbara and Ventura counties affected by the Thomas Fire, which burned over 280,000 acres from December 4, 2017, until its containment on January 12, 2018. The fire’s total burn perimeter is outlined in dark red. The false-color image incorporates shortwave infrared (SWIR) in red, which is particularly effective for identifying areas of burn damage, as newly burned land strongly reflects SWIR wavelengths. The near-infrared (NIR) band is represented in green, highlighting healthy vegetation, as plants strongly reflect NIR.
 
-In conclusion, visualizing AQI scores during the Thomas Fire and mapping its burn scar using SWIR provides valuable insights into the fire's impact on Santa Barbara and Ventura counties. However, it is important to note that these analyses primarily illustrate large-scale effects and do not adddress the fire's direct impacts on people and the environment at the ground level.
+In conclusion, visualizing AQI scores during the Thomas Fire and mapping its burn scar using SWIR provides valuable insights into the fire’s impact on Santa Barbara and Ventura counties. However, it is important to note that these analyses primarily illustrate large-scale effects and do not address the fire’s direct impacts on people and the environment at the ground level.
+
+
+## References and Data Sources:
+
+Environmental Protection Agency (EPA). Air Quality Index (AQI) Data. https://aqs.epa.gov/aqsweb/airdata/download_files.html (Accessed October, 2024)
+
+Earth Resources Observation and Science (EROS) Center. (2020). Landsat 8-9 Operational Land Imager / Thermal Infrared Sensor Level-2, Collection 2 [dataset]. U.S. Geological Survey. https://doi.org/10.5066/P9OGBGM6 (Access Novemeber, 2024)
+
+California Department of Forestry and Fire Protection (CAL FIRE). (2023). California fire perimeters (all). Data.gov. https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436 (Accessed November, 2024)
 
