@@ -7,6 +7,10 @@
 
 /.quarto/
 
+# Add any data folder to gitignore
+**/data/
+
+# Add pics and data folder for fish stats post 
 /posts/2024-12-10-fish-stats/data/
 /posts/2024-12-10-fish-stats/pics/
 .Rproj.user
