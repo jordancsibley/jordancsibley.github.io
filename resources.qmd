@@ -1,3 +1,30 @@
 ---
-
+title: "Resources"
+subtitle: "Some of my favorite resources"
+title-block-banner: true
 ---
+
+## Data Visualization
+
+### Chart types 
+- [From Data to Viz](https://www.data-to-viz.com/) by Yan Holtz and Conor Healy: A helpful resource for deciding which kind of chart is appropriate for the data you are using 
+- [Data Viz Project](https://datavizproject.com/) by Ferdio: Provides a 100 different visualizations from one single dataset
+
+### Colors 
+- [coolors.co](https://coolors.co/): Allows you to generate palettes, extract colors from uploaded images, and a color contrast checker 
+- [Viz Palette](https://projects.susielu.com/viz-palette) by Elijah Meeks and Susie Lu: A tool that lets you see your selected colors in different chart types
+- [Colorblind Safe Color Schemes](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.nceas.ucsb.edu/sites/default/files/2022-06/Colorblind%20Safe%20Color%20Schemes.pdf) by the NCEAS Science Communication Resource Center: Suggestions for using color schemes that are color blind friendly
+
+### Text 
+- [Google Fonts](https://fonts.google.com/): Easy way to view and download fonts, which can be imported into `ggplot` for use
+- [fontpair](https://www.fontpair.co/): Displays font in a pair that look good together, helpful for selecting heading and body text 
+- [Choosing Fonts for Your Data Visualization](https://nightingaledvs.com/choosing-fonts-for-your-data-visualization/) by Tiffany France: A helpful guide that explains which fonts work best for use in a data visualization
+
+### Digital Design 
+- [Affinity Designer 2](https://affinity.serif.com/en-us/?srsltid=AfmBOorln7q6pJN-ltCo-WMqsIMKGDsF0h2pSgiNcAsi5o3eQZ7fTQsH) by Serif: Graphic design and page layout software that is helpful for editing data visualizations and creating infographics 
+- [Procreate](https://procreate.com/) by Savage Interactive: raster graphics editor app for digital painting on iPad
+
+## Marine Science 
+
+### Jobs and Opportunities 
+- [Marine Science Scholarships and Opportunities](docs/resources/marine-opps.pdf){target="_blank"} by Carly Haack: A list of resources for scholarships and job posting sites

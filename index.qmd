@@ -1,6 +1,6 @@
 ---
 title: ""
-image: jordan_headshot.jpeg
+image: pics/jordan_headshot.jpeg
 about: 
   template: trestles
   image-shape: rounded 
